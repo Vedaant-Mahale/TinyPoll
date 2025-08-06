@@ -10,11 +10,11 @@ app.get('/api', (req, res) => {
 });
 
 // Serve static files from client/dist
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../client')));
 
 // Fallback for React Router
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 // Start server
