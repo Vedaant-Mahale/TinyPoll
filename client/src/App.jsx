@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className='bg-blue-300 w-screen h-screen'>
         
       </div>
     </>
