@@ -1,0 +1,8 @@
+{
+  "name": "tinypoll",
+  "scripts": {
+    "start": "node server.js", 
+    "client": "cd client && npm run build",
+    "server": "cd server && npm start"
+  }
+}
