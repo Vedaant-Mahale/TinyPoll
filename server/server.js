@@ -4,20 +4,19 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Example API route
+// Serve static files from Vite build
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// API route
 app.get('/api', (req, res) => {
   res.json({ message: 'API is working!' });
 });
 
-// Serve static files from client/dist
-app.use(express.static(path.join(__dirname, '../client')));
-
-// Fallback for React Router
+// Fallback to index.html for SPA routing
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/index.html'));
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
