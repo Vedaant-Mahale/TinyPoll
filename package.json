@@ -2,7 +2,7 @@
   "name": "tinypoll",
   "scripts": {
     "start": "cd server && node server.js",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "express": "^4.19.0"
