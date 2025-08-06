@@ -1,13 +1,23 @@
-const express = require('express')
+const express = require('express');
+const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000; // IMPORTANT for Render
+const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.send('Server is running!');
+// Example API route
+app.get('/api', (req, res) => {
+  res.json({ message: 'API is working!' });
 });
 
-// Make server listen
+// Serve static files from client/dist
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// Fallback for React Router
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
+
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
