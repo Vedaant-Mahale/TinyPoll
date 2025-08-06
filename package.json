@@ -4,5 +4,8 @@
     "start": "cd server && node server.js",
     "client": "cd client && npm run build",
     "server": "cd server && npm start"
+  },
+  "dependencies": {
+    "express": "^4.19.0"
   }
 }
