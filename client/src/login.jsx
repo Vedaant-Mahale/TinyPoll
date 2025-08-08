@@ -15,7 +15,32 @@ function Login()
                     <div>Polls</div>
                 </div>
                 </div>
-                
+                <div className='w-3/4 h-full mt-20 flex justify-around'>
+                    <div className='w-120 h-130 border-blue-700 border-4 rounded-2xl flex flex-col items-center'>
+                        <div className='text-4xl text-blue-700 ml-auto mr-auto mt-10'>
+                            Register
+                        </div>
+                        <div className='mt-32 w-full flex flex-col items-center'>
+                            <input className='b-2 p-2 border-2 rounded-full border-blue-700 w-3/4' placeholder='Username' type="text"></input>
+                            <input className='m-5 b-2 border-2 p-2 rounded-full border-blue-700 w-3/4' placeholder='Password' type="text"></input>
+                        </div>
+                        <div className='mt-20 w-full flex flex-col items-center'>
+                            <div className='w-1/2 cursor-pointer rounded-full bg-blue-700 h-10 text-white flex justify-center items-center p-2'>REGISTER</div>
+                        </div>
+                    </div>
+                    <div className='w-120 h-130 border-black border-4 rounded-2xl flex flex-col items-center'>
+                        <div className='text-4xl text-black ml-auto mr-auto mt-10'>
+                            Login
+                        </div>
+                        <div className='mt-32 w-full flex flex-col items-center'>
+                            <input className='b-2 p-2 border-2 rounded-full border-black w-3/4' placeholder='Username' type="text"></input>
+                            <input className='m-5 b-2 border-2 p-2 rounded-full border-black w-3/4' placeholder='Password' type="text"></input>
+                        </div>
+                        <div className='mt-20 w-full flex flex-col items-center'>
+                            <div className='w-1/2 cursor-pointer rounded-full bg-black h-10 text-white flex justify-center items-center p-2'>LOGIN</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )
