@@ -7,6 +7,7 @@ const cors = require("cors");
 require('dotenv').config();
 
 const app = express();
+app.use(express.json());
 app.use(cors({ origin: "https://tinypoll.onrender.com" }));
 const PORT = process.env.PORT || 3000;
 
@@ -24,31 +25,26 @@ pool.connect()
   })
   .catch(err => console.error('❌ Database connection error:', err.stack));
 
-app.use(express.json());
 
-// Register new user
-app.post('/register', async (req, res) => {
-  const { name, password } = req.body;
 
-  if (!name || !password) {
-    return res.status(400).json({ error: 'Name and password required' });
-  }
-
-  try {
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Insert into DB
-    const result = await pool.query(
-      'INSERT INTO users (name, password) VALUES ($1, $2) RETURNING id, name',
-      [name, hashedPassword]
-    );
-
-    res.status(201).json({ message: 'User registered', user: result.rows[0] });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Registration failed' });
-  }
+app.post('/register', async (req, res) => 
+{
+    const { name, password } = req.body;
+    if (!name || !password) 
+    {
+        return res.status(400).json({ error: 'Name and password required' });
+    }
+    try 
+    {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const result = await pool.query('INSERT INTO users (name, password) VALUES ($1, $2) RETURNING id, name',[name, hashedPassword]);
+        res.status(201).json({ message: 'User registered', user: result.rows[0] });
+    } 
+    catch (err) 
+    {
+        console.error(err);
+        res.status(500).json({ error: 'Registration failed' });
+    }
 });
 
 // Login user
@@ -80,7 +76,7 @@ app.post('/login', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
-    res.status(200).json({ message: 'Login successful', token });
+    res.status(200).json({ message: 'Login successful', token, user:user });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Login failed' });
