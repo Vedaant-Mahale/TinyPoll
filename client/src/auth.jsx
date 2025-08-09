@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios';
 import './App.css'
 
-function Login()
+function Auth()
 {
     const [RegUser,setRegUser] = useState("");
     const [RegPass,setRegPass] = useState("");  
@@ -15,6 +15,19 @@ function Login()
         {
             await axios.post("https://tinypoll.onrender.com/register",{name:RegUser,password:RegPass})
             alert("User Added")
+        }
+        catch
+        {
+            console.log("Error Sending Request to Server")
+        }
+    }
+    const onLogin = async () =>
+    {
+        try
+        {
+            const result = await axios.post("https://tinypoll.onrender.com/login",{name:RegUser,password:RegPass})
+            console.log(result)
+            alert("Login Successful")
         }
         catch
         {
@@ -62,4 +75,4 @@ function Login()
     )
 }
 
-export default Login
+export default Auth
