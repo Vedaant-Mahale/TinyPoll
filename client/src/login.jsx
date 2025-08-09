@@ -5,6 +5,10 @@ import './App.css'
 
 function Login()
 {
+    const [RegUser,setRegUser] = useState("");
+    const [RegPass,setRegPass] = useState("");  
+    const [LogUser,setLogUser] = useState("");
+    const [LogPass,setLogPass] = useState("");
     return(
 
         <>
@@ -21,8 +25,8 @@ function Login()
                             Register
                         </div>
                         <div className='mt-32 w-full flex flex-col items-center'>
-                            <input className='b-2 p-2 border-2 rounded-full border-blue-700 w-3/4' placeholder='Username' type="text"></input>
-                            <input className='m-5 b-2 border-2 p-2 rounded-full border-blue-700 w-3/4' placeholder='Password' type="text"></input>
+                            <input className='b-2 p-2 border-2 rounded-full border-blue-700 w-3/4' placeholder='Username' type="text" onChange={(e) => {setRegUser(e.target.value)}}></input>
+                            <input className='m-5 b-2 border-2 p-2 rounded-full border-blue-700 w-3/4' placeholder='Password' type="text" onChange={(e) => {setRegPass(e.target.value)}}></input>
                         </div>
                         <div className='mt-20 w-full flex flex-col items-center'>
                             <div className='w-1/2 cursor-pointer rounded-full bg-blue-700 h-10 text-white flex justify-center items-center p-2'>REGISTER</div>
@@ -33,8 +37,8 @@ function Login()
                             Login
                         </div>
                         <div className='mt-32 w-full flex flex-col items-center'>
-                            <input className='b-2 p-2 border-2 rounded-full border-black w-3/4' placeholder='Username' type="text"></input>
-                            <input className='m-5 b-2 border-2 p-2 rounded-full border-black w-3/4' placeholder='Password' type="text"></input>
+                            <input className='b-2 p-2 border-2 rounded-full border-black w-3/4' placeholder='Username' type="text" onChange={(e) => {setLogUser(e.target.value)}}></input>
+                            <input className='m-5 b-2 border-2 p-2 rounded-full border-black w-3/4' placeholder='Password' type="text" onChange={(e) => {setLogPass(e.target.value)}}></input>
                         </div>
                         <div className='mt-20 w-full flex flex-col items-center'>
                             <div className='w-1/2 cursor-pointer rounded-full bg-black h-10 text-white flex justify-center items-center p-2'>LOGIN</div>
