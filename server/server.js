@@ -3,9 +3,11 @@ const path = require('path');
 const { Pool } = require('pg');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cors = require("cors");
 require('dotenv').config();
 
 const app = express();
+app.use(cors({ origin: "https://tinypoll.onrender.com" }));
 const PORT = process.env.PORT || 3000;
 
 // PostgreSQL connection
@@ -25,7 +27,7 @@ pool.connect()
 app.use(express.json());
 
 // Register new user
-app.post('/api/register', async (req, res) => {
+app.post('/register', async (req, res) => {
   const { name, password } = req.body;
 
   if (!name || !password) {
@@ -50,7 +52,7 @@ app.post('/api/register', async (req, res) => {
 });
 
 // Login user
-app.post('/api/login', async (req, res) => {
+app.post('/login', async (req, res) => {
   const { name, password } = req.body;
 
   if (!name || !password) {
@@ -87,7 +89,7 @@ app.post('/api/login', async (req, res) => {
 });
 
 // Example protected route
-app.get('/api/protected', (req, res) => {
+app.get('/protected', (req, res) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ error: 'Token required' });
 

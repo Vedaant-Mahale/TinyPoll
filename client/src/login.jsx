@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import axios from 'axios';
 import './App.css'
 
 function Login()
@@ -9,6 +8,18 @@ function Login()
     const [RegPass,setRegPass] = useState("");  
     const [LogUser,setLogUser] = useState("");
     const [LogPass,setLogPass] = useState("");
+    const port = process.env.PORT || 3000;
+    const onRegister = async () => 
+    {
+        try
+        {
+            await axios.post("https://tinypoll.onrender.com/register",{name:RegUser,password:RegPass})
+        }
+        catch
+        {
+            console.log("Error Sending Request to Server")
+        }
+    }
     return(
 
         <>
@@ -29,7 +40,7 @@ function Login()
                             <input className='m-5 b-2 border-2 p-2 rounded-full border-blue-700 w-3/4' placeholder='Password' type="text" onChange={(e) => {setRegPass(e.target.value)}}></input>
                         </div>
                         <div className='mt-20 w-full flex flex-col items-center'>
-                            <div className='w-1/2 cursor-pointer rounded-full bg-blue-700 h-10 text-white flex justify-center items-center p-2'>REGISTER</div>
+                            <div className='w-1/2 cursor-pointer rounded-full bg-blue-700 h-10 text-white flex justify-center items-center p-2' onClick={onRegister}>REGISTER</div>
                         </div>
                     </div>
                     <div className='w-120 h-130 border-black border-4 rounded-2xl flex flex-col items-center'>
