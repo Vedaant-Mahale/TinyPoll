@@ -14,6 +14,7 @@ function Login()
         try
         {
             await axios.post("https://tinypoll.onrender.com/register",{name:RegUser,password:RegPass})
+            alert("User Added")
         }
         catch
         {
