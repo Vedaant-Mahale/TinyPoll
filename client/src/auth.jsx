@@ -30,7 +30,7 @@ function Auth()
             const result = await axios.post("https://tinypoll.onrender.com/login",{name:LogUser,password:LogPass})
             console.log(result)
             alert("Login Successful")
-            navigate('/dash',{state:{name:LogUser,id:result.userid}})
+            navigate('/dash',{state:{name:LogUser,id:result.data.userid}})
         }
         catch
         {
