@@ -37,7 +37,7 @@ function Auth()
     return(
 
         <>
-            <div className='bg-white w-screen h-screen flex-col flex justify-center items-center overflow-auto'>
+            <div className='bg-white w-screen h-screen md:flex-row flex-col flex justify-center items-center overflow-auto'>
                 <div className='w-1/2 h-20 rounded-2xl m-auto mt-10 flex justify-center items-center'>
                 <div className="flex text-7xl">
                     <div className='text-blue-600'>Tiny</div>
