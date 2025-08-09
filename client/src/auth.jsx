@@ -25,7 +25,7 @@ function Auth()
     {
         try
         {
-            const result = await axios.post("https://tinypoll.onrender.com/login",{name:RegUser,password:RegPass})
+            const result = await axios.post("https://tinypoll.onrender.com/login",{name:LogUser,password:LogPass})
             console.log(result)
             alert("Login Successful")
         }
