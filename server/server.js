@@ -76,7 +76,7 @@ app.post('/login', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
-    res.status(200).json({ message: 'Login successful', token, user:user });
+    res.status(200).json({ message: 'Login successful', userid: user.id, token });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Login failed' });

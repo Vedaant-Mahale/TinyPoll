@@ -5,6 +5,7 @@ import './App.css'
 
 function Auth()
 {
+    const navigate = useNavigate();
     const [RegUser,setRegUser] = useState("");
     const [RegPass,setRegPass] = useState("");  
     const [LogUser,setLogUser] = useState("");
@@ -29,6 +30,7 @@ function Auth()
             const result = await axios.post("https://tinypoll.onrender.com/login",{name:LogUser,password:LogPass})
             console.log(result)
             alert("Login Successful")
+            navigate('/auth',{state:{name:LogUser,id:result.userid}})
         }
         catch
         {
