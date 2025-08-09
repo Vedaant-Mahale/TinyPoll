@@ -37,14 +37,14 @@ function Auth()
     return(
 
         <>
-            <div className='bg-white w-screen h-screen md:flex-row flex-col flex justify-center items-center overflow-auto'>
+            <div className='bg-white w-screen h-screen flex-col flex justify-center items-center overflow-auto'>
                 <div className='w-1/2 h-20 rounded-2xl m-auto mt-10 flex justify-center items-center'>
                 <div className="flex text-7xl">
                     <div className='text-blue-600'>Tiny</div>
                     <div>Polls</div>
                 </div>
                 </div>
-                <div className='w-3/4 h-full mt-20 flex justify-around'>
+                <div className='w-3/4 h-full mt-20 flex flex-col md:flex-row justify-around'>
                     <div className='w-120 h-130 border-blue-700 border-4 rounded-2xl flex flex-col items-center'>
                         <div className='text-4xl text-blue-700 ml-auto mr-auto mt-10'>
                             Register
