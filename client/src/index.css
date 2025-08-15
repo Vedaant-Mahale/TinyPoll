@@ -3,24 +3,4 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.hover-blue {
-  background-color: white;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.hover-blue:hover {
-  background-color: #1D4ED8;
-  color: white;
-}
-
-.hover-black {
-  background-color: white;
-  color: black;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.hover-black:hover {
-  background-color: black;
-  color: white;
-}
 
