@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect } from "react";
+import axios from "axios";
 import Poll from './poll';
 import './App.css';
 
