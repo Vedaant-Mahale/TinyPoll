@@ -1,10 +1,31 @@
 import { useLocation } from 'react-router-dom';
+import { useEffect } from "react";
+import Poll from './poll';
 import './App.css';
 
 function Dashboard() {
     const location = useLocation();
     const { name, id } = location.state || {};
+     const polls = [
+    { pollId: 1, name: "Best Movie 2025", owner: "Alice" },
+    { pollId: 2, name: "Favorite Food", owner: "Bob" },
+    { pollId: 3, name: "Dream Travel Spot", owner: "Charlie" },
+    ];
+    useEffect(() => {
+    const fetchData = async () => {
+        try {
+        const result = await axios.post(
+            "https://tinypoll.onrender.com/getpoll",
+            { query: "a" }
+        );
+        console.log(result.data); // use result.data instead of result
+        } catch (error) {
+        console.log("An error happened", error);
+        }
+    };
 
+    fetchData();
+    }, []); // [] so it runs once on mount
     return (
         <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen flex flex-col items-center py-10">
             
@@ -37,8 +58,16 @@ function Dashboard() {
             </div>
 
             {/* Welcome Section */}
-            <div className="mt-12 text-center">
-                
+            <div className="w-11/12 mt-12 flex grid-cols-4 space-x-15">
+            
+                {polls.map((poll,key) => (
+                    <Poll
+                    key={key}
+                    pollId={poll.pollId}
+                    name={poll.name}
+                    owner={poll.owner}
+                    />
+                ))}
             </div>
         </div>
     );

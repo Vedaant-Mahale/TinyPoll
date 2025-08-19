@@ -83,6 +83,25 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.post('/getpoll', async (req, res) => {
+  const { query } = req.body; // expecting { query: "somevalue" }
+  if (!query) {
+    return res.status(400).json({ error: 'No Query to Search' });
+  }
+
+  try {
+    const result = await pool.query(
+      'SELECT * FROM polls WHERE poll_name LIKE $1',
+      [query + '%']   // attach % here
+    );
+    res.status(200).json(result.rows);  // return rows directly
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Query failed' });
+  }
+});
+
+
 // Example protected route
 app.get('/protected', (req, res) => {
   const authHeader = req.headers.authorization;
