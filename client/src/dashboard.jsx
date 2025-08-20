@@ -32,17 +32,17 @@ function Dashboard() {
         <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen flex flex-col items-center py-10">
             
             {/* Top Navigation */}
-            <div className="w-11/12 md:w-3/4 flex justify-between items-center bg-white shadow-lg rounded-2xl px-6 py-4">
+            <div className="w-11/12 md:w-3/4 h-28  flex justify-between items-center bg-white shadow-lg rounded-2xl px-6 py-4">
                 
                 {/* Profile Button */}
                 <div 
-                    className="w-32 h-32 rounded-full text-blue-700 flex justify-center items-center font-bold 
-                               transition-all duration-300 cursor-pointer shadow-lg
+                    className="w-32 h-16 rounded-full text-blue-700 flex justify-center items-center font-bold 
+                               transition-all duration-300 cursor-pointer border-2 border-blue-700
                                hover:scale-105 hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 hover:text-white"
                 >
                     PROFILE
                 </div>
-
+                
                 {/* Logo */}
                 <div className="flex items-center space-x-1 text-6xl font-extrabold">
                     <span className="text-blue-600 drop-shadow-md">Tiny</span>
@@ -51,14 +51,19 @@ function Dashboard() {
 
                 {/* Set Poll Button */}
                 <div 
-                    className="w-32 h-32 rounded-full text-black flex justify-center items-center font-bold 
-                               transition-all duration-300 cursor-pointer shadow-lg
+                    className="w-32 h-16 rounded-full text-black flex justify-center items-center font-bold 
+                               transition-all duration-300 cursor-pointer border-2 border-black
                                hover:scale-105 hover:bg-gradient-to-r hover:from-gray-800 hover:to-black hover:text-white"
                 >
                     SET POLL
                 </div>
             </div>
-
+            <div className='w-11/12 md:w-3/4 h-12 bg-white mt-10 rounded-full shadow-lg flex justify-between'>
+                <input className='h-10 p-2 w-1/2 rounded-full ml-1 mt-1 border-1 border-black'></input>
+                <div className='h-10 p-2 w-30 text-blue-700 mr-1 mt-1 font-bold rounded-full flex items-center justify-center
+                transition-all duration-300 cursor-pointer border-2 border-blue-700
+                               hover:scale-105 hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 hover:text-white'>Search</div>
+            </div>
             {/* Welcome Section */}
             <div className="w-11/12 mt-12 flex grid-cols-4 space-x-15">
             
