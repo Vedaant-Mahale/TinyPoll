@@ -12,21 +12,22 @@ function Dashboard() {
     { pollId: 2, name: "Favorite Food", owner: "Bob" },
     { pollId: 3, name: "Dream Travel Spot", owner: "Charlie" },
     ];
+    const [result, setResult] = useState([])
     useEffect(() => {
     const fetchData = async () => {
         try {
-        const result = await axios.post(
+        const tempresult = await axios.post(
             "https://tinypoll.onrender.com/getpoll",
             { query: "a" }
         );
-        console.log(result.data); // use result.data instead of result
+        setResult(tempresult.data)
         } catch (error) {
         console.log("An error happened", error);
         }
     };
 
     fetchData();
-    }, []); // [] so it runs once on mount
+    }, []);
     return (
         <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen flex flex-col items-center py-10">
             
