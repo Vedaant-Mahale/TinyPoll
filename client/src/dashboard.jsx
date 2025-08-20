@@ -61,12 +61,12 @@ function Dashboard() {
             {/* Welcome Section */}
             <div className="w-11/12 mt-12 flex grid-cols-4 space-x-15">
             
-                {polls.map((poll,key) => (
+                {result.map((poll,key) => (
                     <Poll
                     key={key}
-                    pollId={poll.pollId}
-                    name={poll.name}
-                    owner={poll.owner}
+                    pollId={poll.poll_id}
+                    name={poll.poll_name}
+                    owner={poll.name}
                     />
                 ))}
             </div>
