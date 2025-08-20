@@ -91,7 +91,7 @@ app.post('/getpoll', async (req, res) => {
 
   try {
     const result = await pool.query(
-      'SELECT polls.poll_id,polls.poll_name,users.name FROM polls INNER JOIN users on polls.owner_id = users.id WHERE poll_name LIKE $1',
+      'SELECT polls.id,polls.poll_name,users.name FROM polls INNER JOIN users on polls.owner_id = users.id WHERE poll_name LIKE $1',
       [query + '%']   // attach % here
     );
     res.status(200).json(result.rows);  // return rows directly

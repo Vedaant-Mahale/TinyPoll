@@ -65,7 +65,7 @@ function Dashboard() {
                 {result.map((poll,key) => (
                     <Poll
                     key={key}
-                    pollId={poll.poll_id}
+                    pollId={poll.id}
                     name={poll.poll_name}
                     owner={poll.name}
                     />
