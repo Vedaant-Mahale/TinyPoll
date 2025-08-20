@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect,useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Poll from './poll';
 import './App.css';
@@ -7,27 +7,20 @@ import './App.css';
 function Dashboard() {
     const location = useLocation();
     const { name, id } = location.state || {};
-     const polls = [
-    { pollId: 1, name: "Best Movie 2025", owner: "Alice" },
-    { pollId: 2, name: "Favorite Food", owner: "Bob" },
-    { pollId: 3, name: "Dream Travel Spot", owner: "Charlie" },
-    ];
+    const [searchQuery,setSearchQuery] = useState("");
     const [result, setResult] = useState([])
-    useEffect(() => {
-    const fetchData = async () => {
+    const search = async () =>
+    {
         try {
         const tempresult = await axios.post(
             "https://tinypoll.onrender.com/getpoll",
-            { query: "a" }
+            { query: searchQuery }
         );
         setResult(tempresult.data)
         } catch (error) {
         console.log("An error happened", error);
         }
-    };
-
-    fetchData();
-    }, []);
+    }
     return (
         <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen flex flex-col items-center py-10">
             
@@ -59,10 +52,10 @@ function Dashboard() {
                 </div>
             </div>
             <div className='w-11/12 md:w-3/4 h-12 bg-white mt-10 rounded-full shadow-lg flex justify-between'>
-                <input className='h-10 p-2 w-1/2 rounded-full ml-1 mt-1 border-1 border-black'></input>
+                <input className='h-10 p-2 w-1/2 rounded-full ml-1 mt-1 border-1 border-black' onChange={(e) => {setSearchQuery(e.target.value)}}></input>
                 <div className='h-10 p-2 w-30 text-blue-700 mr-1 mt-1 font-bold rounded-full flex items-center justify-center
                 transition-all duration-300 cursor-pointer border-2 border-blue-700
-                               hover:scale-105 hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 hover:text-white'>Search</div>
+                               hover:scale-105 hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 hover:text-white' onClick={search}>Search</div>
             </div>
             {/* Welcome Section */}
             <div className="w-11/12 mt-12 flex grid-cols-4 space-x-15">
