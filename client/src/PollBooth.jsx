@@ -7,19 +7,23 @@ function PollBooth()
 {
     const location = useLocation();
     const { name, id } = location.state || {};
-    useEffect(async () => 
+    useEffect(() => {
+    const fetchData = async () => 
     {
-        console.log(location.state);
-        try 
-        {
-            result = await axios.post("https://tinypoll.onrender.com/getpolldata", { id:id });
-            console.log(result);
+        try {
+            const result = await axios.post(
+                "https://tinypoll.onrender.com/getpolldata",
+                { id } 
+            );
+            console.log("Server response:", result.data);
         } 
-        catch 
+        catch (err) 
         {
-            console.log("Error Sending Request to Server");
+            console.error("Error Sending Request to Server:", err.response?.data || err.message);
         }
-    })
+    };
+    }, [id, location.state]);
+
     return(
         <></>
     );
