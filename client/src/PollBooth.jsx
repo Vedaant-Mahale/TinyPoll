@@ -9,6 +9,7 @@ function PollBooth()
     const { name, id } = location.state || {};
     useEffect(async () => 
     {
+        console.log(location.state);
         try 
         {
             result = await axios.post("https://tinypoll.onrender.com/getpolldata", { id:id });
