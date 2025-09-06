@@ -114,7 +114,7 @@ app.get('/protected', (req, res) => {
   });
 });
 
-app.get('/getpolldata', async (req,res) => {
+app.post('/getpolldata', async (req,res) => {
   const { id } = req.body;
   if (!id) 
   {
