@@ -22,6 +22,8 @@ function PollBooth()
             console.error("Error Sending Request to Server:", err.response?.data || err.message);
         }
     };
+
+    if (id !== undefined && id !== null) fetchData();
     }, [id, location.state]);
 
     return(
