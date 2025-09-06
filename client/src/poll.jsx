@@ -1,5 +1,5 @@
-import e from "cors";
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import React, { use } from "react";
 
 function Poll({pollID,name,owner})
 {
@@ -19,6 +19,7 @@ function Poll({pollID,name,owner})
                             rounded-full font-bold
                             hover:scale-105 hover:bg-gradient-to-r 
                             hover:from-blue-600 hover:to-blue-800 hover:text-white"
+                    onClick={useNavigate('/poll',{ state: { name: name, id: pollID } })}
                 >
                     ENTER
                 </div>

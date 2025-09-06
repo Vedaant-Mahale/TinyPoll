@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Auth from './auth';
 import Dashboard from './dashboard';
+import PollBooth from './PollBooth';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="/dash" element={<Dashboard />} />
+        <Route path="/poll" element={<PollBooth />} />
       </Routes>
     </Router>
   );

@@ -114,6 +114,24 @@ app.get('/protected', (req, res) => {
   });
 });
 
+app.get('/getpolldata', async (req,res) => {
+  const { id } = req.body;
+  if (!id) 
+  {
+    return res.status(400).json({ error: 'No id given to Search' });
+  }
+  try
+  {
+    const result = await pool.query('SELECT choice_number,choice_name FROM poll_choices where poll_id = $1',[id])
+    res.status(200).json(result.rows);
+  }
+  catch
+  {
+    console.error(err);
+    res.status(500).json({ error: 'Query failed' });
+  }
+})
+
 // Serve static files from Vite build
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
