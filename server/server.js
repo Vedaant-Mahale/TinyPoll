@@ -115,7 +115,7 @@ app.get('/protected', (req, res) => {
 });
 
 app.post('/getpolldata', async (req,res) => {
-  const { id } = req.body;
+  const id = req.body.id;
   if (!id) 
   {
     return res.status(400).json({ error: 'No id given to Search' });
